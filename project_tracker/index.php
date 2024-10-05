@@ -185,6 +185,18 @@ if (isset($_POST['action'])) {
         .form-actions .button {
             width: 45%;
         }
+
+        .close-button {
+            background-color: #ff6666;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            position: absolute; /* Positioning relative to form panel */
+            top: 10px; /* Adjust as needed */
+            right: 10px; /* Adjust as needed */
+        }
     </style>
 </head>
 
@@ -208,6 +220,7 @@ if (isset($_POST['action'])) {
             <?php } ?>
         </div>
         <div class="right-panel" id="formPanel">
+            <button class="close-button" onclick="closePanel()">X</button>
             <h2 id="formTitle">Add Project/Task</h2>
             <form id="form-data">
                 <input type="hidden" id="id" name="id">
@@ -286,6 +299,11 @@ if (isset($_POST['action'])) {
                     weightGroup.style.display = 'block'; // Show weight selection
                 });
             }
+        }
+
+        function closePanel() {
+            var formPanel = document.getElementById('formPanel');
+            formPanel.style.display = 'none'; // Hide the form panel
         }
 
         function saveItem() {
