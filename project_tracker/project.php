@@ -2,6 +2,7 @@
 require_once 'koneksi.php';
 
 function tampilkan_project() {
+    global $conn; // tambahkan baris ini
     $query = "SELECT * FROM project";
     $result = $conn->query($query);
     $projects = array();
@@ -12,6 +13,7 @@ function tampilkan_project() {
 }
 
 function tambah_project($name, $status) {
+    global $conn; // tambahkan baris ini
     $query = "INSERT INTO project (name, status) VALUES ('$name', '$status')";
     if ($conn->query($query) === TRUE) {
         return true;
@@ -21,6 +23,7 @@ function tambah_project($name, $status) {
 }
 
 function edit_project($id, $name, $status) {
+    global $conn; // tambahkan baris ini
     $query = "UPDATE project SET name = '$name', status = '$status' WHERE id = $id";
     if ($conn->query($query) === TRUE) {
         return true;
@@ -30,6 +33,7 @@ function edit_project($id, $name, $status) {
 }
 
 function hapus_project($id) {
+    global $conn; // tambahkan baris ini
     $query = "DELETE FROM project WHERE id = $id";
     if ($conn->query($query) === TRUE) {
         return true;
@@ -39,6 +43,7 @@ function hapus_project($id) {
 }
 
 function tampilkan_task($project_id) {
+    global $conn; // tambahkan baris ini
     $query = "SELECT * FROM task WHERE project_id = $project_id";
     $result = $conn->query($query);
     $tasks = array();
@@ -49,6 +54,7 @@ function tampilkan_task($project_id) {
 }
 
 function tambah_task($name, $status, $project_id, $weight) {
+    global $conn; // tambahkan baris ini
     $query = "INSERT INTO task (name, status, project_id, weight) VALUES ('$name', '$status', $project_id, $weight)";
     if ($conn->query($query) === TRUE) {
         return true;
@@ -58,6 +64,7 @@ function tambah_task($name, $status, $project_id, $weight) {
 }
 
 function edit_task($id, $name, $status, $project_id, $weight) {
+    global $conn; // tambahkan baris ini
     $query = "UPDATE task SET name = '$name', status = '$status', project_id = $project_id, weight = $weight WHERE id = $id";
     if ($conn->query($query) === TRUE) {
         return true;
@@ -67,6 +74,7 @@ function edit_task($id, $name, $status, $project_id, $weight) {
 }
 
 function hapus_task($id) {
+    global $conn; // tambahkan baris ini
     $query = "DELETE FROM task WHERE id = $id";
     if ($conn->query($query) === TRUE) {
         return true;
